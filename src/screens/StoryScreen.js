@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useStory } from '../context/StoryContext';
 
@@ -7,7 +7,6 @@ const StoryScreen = () => {
   const { state, dispatch } = useStory();
   const [showKeyboardBar, setShowKeyboardBar] = useState(false);
   const [askAgastyaMode, setAskAgastyaMode] = useState(false);
-  const [inputText, setInputText] = useState('');
 
   const handleAskAgastya = (action) => {
     // Dummy response for demonstration
@@ -15,36 +14,52 @@ const StoryScreen = () => {
     dispatch({ type: 'SET_RESPONSE_TEXT', payload: response });
   };
 
+  const handleKeyboardButtonPress = () => {
+    setAskAgastyaMode(false);
+    Keyboard.dismiss();
+  };
+
+  const handleStarButtonPress = () => {
+    setAskAgastyaMode(true);
+    Keyboard.dismiss();
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      <TextInput
-        style={styles.titleInput}
-        placeholder="Title"
-        value={state.title}
-        onChangeText={(text) => dispatch({ type: 'SET_TITLE', payload: text })}
-        onFocus={() => setShowKeyboardBar(true)}
-      />
-      <TextInput
-        style={styles.subtitleInput}
-        placeholder="Sub Title"
-        value={state.subtitle}
-        onChangeText={(text) => dispatch({ type: 'SET_SUBTITLE', payload: text })}
-        onFocus={() => setShowKeyboardBar(true)}
-      />
-      <TextInput
-        style={styles.bodyInput}
-        placeholder="Write your story..."
-        value={state.body}
-        onChangeText={(text) => dispatch({ type: 'SET_BODY', payload: text })}
-        onFocus={() => setShowKeyboardBar(true)}
-        multiline
-      />
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20} // Adjust this value as needed
+    >
+      <ScrollView style={styles.container}>
+        <TextInput
+          style={styles.titleInput}
+          placeholder="Title"
+          value={state.title}
+          onChangeText={(text) => dispatch({ type: 'SET_TITLE', payload: text })}
+          onFocus={() => setShowKeyboardBar(true)}
+        />
+        <TextInput
+          style={styles.subtitleInput}
+          placeholder="Sub Title"
+          value={state.subtitle}
+          onChangeText={(text) => dispatch({ type: 'SET_SUBTITLE', payload: text })}
+          onFocus={() => setShowKeyboardBar(true)}
+        />
+        <TextInput
+          style={styles.bodyInput}
+          placeholder="Write your story..."
+          value={state.body}
+          onChangeText={(text) => dispatch({ type: 'SET_BODY', payload: text })}
+          onFocus={() => setShowKeyboardBar(true)}
+          multiline
+        />
+      </ScrollView>
       {showKeyboardBar && (
         <View style={styles.keyboardBar}>
-          <TouchableOpacity onPress={() => setAskAgastyaMode(false)}>
+          <TouchableOpacity onPress={handleKeyboardButtonPress}>
             <Icon name="keyboard" size={30} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setAskAgastyaMode(true)}>
+          <TouchableOpacity onPress={handleStarButtonPress}>
             <Icon name="star" size={30} />
           </TouchableOpacity>
         </View>
@@ -55,8 +70,6 @@ const StoryScreen = () => {
           <TextInput
             style={styles.askAgastyaInput}
             placeholder="Ask me or choose an option"
-            value={inputText}
-            onChangeText={setInputText}
           />
           <TouchableOpacity onPress={() => handleAskAgastya('improve')}>
             <Icon name="arrow-forward" size={30} />
@@ -81,7 +94,7 @@ const StoryScreen = () => {
           <Text style={styles.responseText}>{state.responseText}</Text>
         </View>
       )}
-    </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
