@@ -1,14 +1,22 @@
-import React, { useContext, useState } from 'react';
-import { View, TextInput, StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import KeyboardToolbar from '../components/KeyboardToolbar';
-import AskAgastya from '../components/AskAgastya';
-import { StoryContext } from '../context/StoryContext';
+import React, { useContext, useState } from "react";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Text,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
+import KeyboardToolbar from "../components/KeyboardToolbar";
+import AskAgastya from "../components/AskAgastya";
+import { StoryContext } from "../context/StoryContext";
 
 const StoryScreen = () => {
-  const { title, setTitle, subtitle, setSubtitle, body, setBody } = useContext(StoryContext);
+  const { title, setTitle, subtitle, setSubtitle, body, setBody } =
+    useContext(StoryContext);
   const [showToolbar, setShowToolbar] = useState(false);
   const [showAskAgastya, setShowAskAgastya] = useState(false);
-  const [selectedTool, setSelectedTool] = useState('keyboard');
+  const [selectedTool, setSelectedTool] = useState("keyboard");
 
   const handleFocus = () => {
     if (!showAskAgastya) {
@@ -48,11 +56,11 @@ const StoryScreen = () => {
           <KeyboardToolbar
             onKeyboardPress={() => {
               setShowAskAgastya(false);
-              setSelectedTool('keyboard');
+              setSelectedTool("keyboard");
             }}
             onStarPress={() => {
               setShowAskAgastya(true);
-              setSelectedTool('star');
+              setSelectedTool("star");
             }}
             selectedTool={selectedTool}
             setSelectedTool={setSelectedTool}
@@ -68,16 +76,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   header: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 16,
   },
   titleInput: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -85,7 +93,7 @@ const styles = StyleSheet.create({
   },
   subtitleInput: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -93,11 +101,11 @@ const styles = StyleSheet.create({
   },
   bodyInput: {
     flex: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
-    textAlignVertical: 'top',
+    textAlignVertical: "top",
     borderRadius: 5,
   },
 });
