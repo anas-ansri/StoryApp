@@ -29,7 +29,6 @@ const StoryScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <Text style={styles.header}>Write New Story</Text>
         <TextInput
           style={styles.titleInput}
           placeholder="Title"
@@ -46,7 +45,7 @@ const StoryScreen = () => {
         />
         <TextInput
           style={styles.bodyInput}
-          placeholder="Body"
+          placeholder="Start writing your story..."
           value={body}
           onChangeText={setBody}
           onFocus={handleFocus}
@@ -75,38 +74,29 @@ const StoryScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 20,
     backgroundColor: "#fff",
   },
-  header: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
   titleInput: {
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
+    fontSize: 24,
+    fontWeight: "bold",
     marginBottom: 10,
-    paddingHorizontal: 10,
-    borderRadius: 5,
+    color: "#000",
+    opacity: 0.5,
   },
   subtitleInput: {
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    borderRadius: 5,
+    fontSize: 16,
+    forntWeight: "bold",
+    marginTop: 10,
+    marginBottom: 50,
+    color: "#333",
   },
   bodyInput: {
+    fontSize: 16,
     flex: 1,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    color: "#000",
+    marginBottom: 20,
     textAlignVertical: "top",
-    borderRadius: 5,
   },
 });
 
