@@ -7,6 +7,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 const AskAgastya = ({ body }) => {
   const [input, setInput] = useState("");
@@ -25,6 +26,12 @@ const AskAgastya = ({ body }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Ask Agastya AI</Text>
+        <TouchableOpacity style={styles.arrowButton}>
+          <FontAwesome name="arrow-right" size={16} color="black" />
+        </TouchableOpacity>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Ask me or choose an option"
@@ -75,10 +82,32 @@ const AskAgastya = ({ body }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    paddingVertical: 20,
     backgroundColor: "#fff",
     borderRadius: 10,
     borderColor: "#ccc",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  headerText: {
+    fontSize: 16,
+    color: "#333",
+    fontWeight: "semibold",
+    paddingVertical: 8,
+  },
+  arrowButton: {
+    width: 36,
+    height: 36,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     height: 46,
