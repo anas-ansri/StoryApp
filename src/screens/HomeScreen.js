@@ -7,8 +7,12 @@ import StorytellingSvg from "../../assets/storytelling.svg"; // Adjust the path 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StorytellingSvg style={styles.backgroundSvg} />
       <LinearGradient colors={["#6200EE", "#3700B3"]} style={styles.overlay}>
+        <StorytellingSvg
+          style={styles.backgroundSvg}
+          width={300}
+          height={300}
+        />
         <Text style={styles.welcomeText}>Welcome to Story Writer</Text>
         <TouchableOpacity
           style={styles.button}
@@ -33,12 +37,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  backgroundSvg: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    zIndex: -1,
-  },
   overlay: {
     flex: 1,
     justifyContent: "center",
@@ -51,7 +49,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#ffffff",
     marginBottom: 20,
-    fontWeight: "bold",
   },
   button: {
     flexDirection: "row",
