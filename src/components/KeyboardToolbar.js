@@ -33,14 +33,14 @@ const KeyboardToolbar = ({ onKeyboardPress, onStarPress, selectedTool, setSelect
 const styles = StyleSheet.create({
   toolbar: {
     backgroundColor: 'white',
-    height: 50,
+    height: 25,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    borderTopWidth: 1,
     borderColor: '#ccc',
   },
   uploadContainer: {
+    paddingLeft: 25,
     flexDirection: 'row',
     alignItems: 'center',
   },

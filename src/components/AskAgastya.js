@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
+    height: 46,
+    borderColor: 'orange',
+    borderWidth: 0.8,
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 16,
     color: '#333',
-    fontWeight: 'bold',
+    fontWeight: 'semibold',
     paddingVertical: 8,
   },
   responseContainer: {
