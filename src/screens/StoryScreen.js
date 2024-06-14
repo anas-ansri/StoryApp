@@ -8,7 +8,7 @@ const StoryScreen = () => {
   const { title, setTitle, subtitle, setSubtitle, body, setBody } = useContext(StoryContext);
   const [showToolbar, setShowToolbar] = useState(false);
   const [showAskAgastya, setShowAskAgastya] = useState(false);
-  const [selectedTool, setSelectedTool] = useState(null);
+  const [selectedTool, setSelectedTool] = useState('keyboard');
 
   const handleFocus = () => {
     if (!showAskAgastya) {
