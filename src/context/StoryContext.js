@@ -1,37 +1,17 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 const StoryContext = createContext();
 
-const initialState = {
-  title: '',
-  subtitle: '',
-  body: '',
-  responseText: '',
-};
-
-const storyReducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_TITLE':
-      return { ...state, title: action.payload };
-    case 'SET_SUBTITLE':
-      return { ...state, subtitle: action.payload };
-    case 'SET_BODY':
-      return { ...state, body: action.payload };
-    case 'SET_RESPONSE_TEXT':
-      return { ...state, responseText: action.payload };
-    default:
-      return state;
-  }
-};
-
-export const StoryProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(storyReducer, initialState);
+const StoryProvider = ({ children }) => {
+  const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
+  const [body, setBody] = useState('');
 
   return (
-    <StoryContext.Provider value={{ state, dispatch }}>
+    <StoryContext.Provider value={{ title, setTitle, subtitle, setSubtitle, body, setBody }}>
       {children}
     </StoryContext.Provider>
   );
 };
 
-export const useStory = () => useContext(StoryContext);
+export { StoryContext, StoryProvider };
