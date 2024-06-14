@@ -10,17 +10,14 @@ Story Creator App is React Native application designed to help users create and 
 - Alert for under-development features.
 - Responsive and user-friendly interface.
 
-## Screenshots
+### App Screens
 
-### Welcome Screen
-
-![Welcome Screen](./screenshots/welcome_screen.png)
-
-### Story Screen
-
-![Story Screen 1](./screenshots/story_screen_1.png)
-![Story Screen 2](./screenshots/story_screen_2.png)
-![Story Screen 3](./screenshots/story_screen_3.png)
+<p align="center">
+  <img src="./screenshots/welcome_screen.png" alt="Welcome Screen" width="200"/>
+  <img src="./screenshots/story_screen_1.png" alt="Story Screen 1" width="200"/>
+  <img src="./screenshots/story_screen_2.png" alt="Story Screen 2" width="200"/>
+  <img src="./screenshots/story_screen_3.png" alt="Story Screen 3" width="200"/>
+</p>
 
 ## Installation
 
