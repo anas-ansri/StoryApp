@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Alert } from "react-native";
 import { MaterialIcons, FontAwesome, Feather } from "@expo/vector-icons";
 
 const KeyboardToolbar = ({
@@ -8,44 +8,65 @@ const KeyboardToolbar = ({
   selectedTool,
   setSelectedTool,
 }) => {
+  const handlePress = (tool) => {
+    if (tool === "keyboard" || tool === "star") {
+      setSelectedTool(tool);
+    } else {
+      Alert.alert(
+        "Feature under development",
+        "This feature is currently under development. Please check back later."
+      );
+    }
+  };
+
   return (
     <View style={styles.toolbar}>
-      <TouchableOpacity onPress={() => setSelectedTool("add")}>
+      <TouchableOpacity onPress={() => handlePress("add")}>
         <MaterialIcons
           name="add"
           size={24}
           color={selectedTool === "add" ? "black" : "#ccc"}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={onKeyboardPress}>
+      <TouchableOpacity
+        onPress={() => {
+          handlePress("keyboard");
+          onKeyboardPress();
+        }}
+      >
         <MaterialIcons
           name="keyboard"
           size={24}
           color={selectedTool === "keyboard" ? "black" : "#ccc"}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={onStarPress}>
+      <TouchableOpacity
+        onPress={() => {
+          handlePress("star");
+          onStarPress();
+        }}
+      >
         <FontAwesome
           name="star"
           size={24}
           color={selectedTool === "star" ? "black" : "#ccc"}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setSelectedTool("text")}>
+      <TouchableOpacity onPress={() => handlePress("text")}>
         <MaterialIcons
           name="text-fields"
           size={24}
           color={selectedTool === "text" ? "black" : "#ccc"}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setSelectedTool("mic")}>
+      <TouchableOpacity onPress={() => handlePress("mic")}>
         <Feather
           name="mic"
           size={24}
           color={selectedTool === "mic" ? "black" : "#ccc"}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setSelectedTool("upload")}>
+      <TouchableOpacity onPress={() => handlePress("upload")}>
         <View style={styles.uploadContainer}>
           <MaterialIcons
             name="photo-camera"
