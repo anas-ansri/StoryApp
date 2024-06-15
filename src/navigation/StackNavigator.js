@@ -8,7 +8,9 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   return (
+    // NavigationContainer is a component that manages the navigation tree and contains the navigation state.
     <NavigationContainer>
+      // Stack.Navigator is a component that manages the navigation stack.
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
