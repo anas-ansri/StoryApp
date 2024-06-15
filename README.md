@@ -39,16 +39,6 @@ Story Creator App is React Native application designed to help users create and 
    npm start
    ```
 
-## Usage
-
-1. Open the Expo app on your emulator or physical device.
-2. Scan the QR code displayed in your terminal or browser after running `npx expo start`.
-3. Navigate to the "Write New Story" screen.
-4. Enter the title, subtitle, and body of your story.
-5. Use the custom toolbar to access different tools. Note that some features are under development and will show an alert if clicked.
-6. Click on the star icon to enable the AI assistant, which will provide writing suggestions based on the story content.
-7. Follow the prompts and improve your story using the AI suggestions.
-
 ## Code Structure
 
 - `StoryScreen.js`: Main screen for writing stories. Contains text inputs for title, subtitle, and body.
